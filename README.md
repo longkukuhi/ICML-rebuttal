@@ -28,6 +28,7 @@ Numbers denote the performance gain of RAD over Dinomaly.
 | K=200 | 99.5 | 98.9 | 75.6 | 71.3 |
 
 #### Radius sweep (K=150, ω<sub>l</sub>=[1,1,1,1])
+The radius ρ is defined on the discrete patch grid and therefore only takes integer values.
 
 | Setting | I-AUROC | I-F1 | P-AP | P-F1 |
 |---|---:|---:|---:|---:|
