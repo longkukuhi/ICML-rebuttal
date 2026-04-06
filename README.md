@@ -1,5 +1,18 @@
 # ICML-rebuttal for Paper 12031
 
+### Controlled analysis on MVTec-AD with a fixed anomaly-free training set and varying test-set proportion
+
+Numbers denote the performance gain of RAD over Dinomaly.
+
+| Method | Train proportion | Test proportion | P-AUROC | P-AP | P-F1 | AUPRO |
+|---|---:|---:|---:|---:|---:|---:|
+| Dinomaly | 100% | 100% | 98.4 | 69.3 | 69.2 | 94.8 |
+| RAD | 100% | 40% | +0.1 | +6.8 | +2.7 | +1.6 |
+| RAD | 100% | 60% | +0.2 | +6.9 | +2.6 | +1.5 |
+| RAD | 100% | 80% | +0.1 | +6.2 | +2.0 | +1.2 |
+| RAD | 100% | 100% | +0.1 | +6.3 | +2.1 | +1.0 |
+
+
 ### Sensitivity sweeps on MVTec-AD
 
 #### Top-K sweep (ρ=1, ω<sub>l</sub>=[1,1,1,1])
