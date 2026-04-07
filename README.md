@@ -42,7 +42,7 @@ The radius ρ is defined on the discrete patch grid and therefore only takes int
 | ρ=10 | 98.9 | 98.4 | 74.9 | 70.6 |
 
 #### Layer-fusion sweep (K=150, ρ=1)
-
+The single-layer results(first four lines) are provided only as ablations, as RAD is fundamentally a multi-layer method.
 | Setting | I-AUROC | I-F1 | P-AP | P-F1 |
 |---|---:|---:|---:|---:|
 | ω<sub>l</sub>=[1,0,0,0] | 96.6 | 96.5 | 65.5 | 64.1 |
