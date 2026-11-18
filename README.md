@@ -1,8 +1,10 @@
-# ICML-rebuttal for Paper 12031
+# RAD supplementary results for ICML submission 12031
 
-### Controlled analysis on MVTec-AD with a fixed anomaly-free training set and varying test-set proportion
+These MVTec AD results accompany *Is Task-Specific Training Necessary for Anomaly Detection?* They examine how test-set size, the number of retrieved references, the patch search radius and the weights assigned to different layers affect RAD. The reference-bank builder, evaluator and dataset instructions are in the [RAD implementation](https://github.com/longkukuhi/RAD).
 
-Numbers denote the performance gain of RAD over Dinomaly.
+## Effect of test-set size
+
+Every row uses the full anomaly-free training set. The Dinomaly row gives **absolute scores** on the full test set. Signed entries in the RAD rows give **gains over Dinomaly** in metric points at the indicated test proportion. Both methods use the same metric columns. AUPRO measures area under the per-region overlap curve.
 
 | Method | Train proportion | Test proportion | P-AUROC | P-AP | P-F1 | AUPRO |
 |---|---:|---:|---:|---:|---:|---:|
@@ -13,9 +15,11 @@ Numbers denote the performance gain of RAD over Dinomaly.
 | RAD | 100% | 100% | +0.1 | +6.3 | +2.1 | +1.0 |
 
 
-### Sensitivity sweeps on MVTec-AD
+## Sensitivity to retrieval and layer fusion
 
-#### Top-K sweep (ρ=1, ω<sub>l</sub>=[1,1,1,1])
+The tables below report absolute scores on MVTec AD. **I-** denotes image-level evaluation and **P-** denotes pixel-level evaluation. Bold settings identify the shared reference configuration for these sweeps.
+
+### Top-K sweep (ρ=1, ω<sub>l</sub>=[1,1,1,1])
 
 | Setting | I-AUROC | I-F1 | P-AP | P-F1 |
 |---|---:|---:|---:|---:|
@@ -27,7 +31,7 @@ Numbers denote the performance gain of RAD over Dinomaly.
 | **K=150** | 99.6 | 99.0 | 75.6 | 71.3 |
 | K=200 | 99.5 | 98.9 | 75.6 | 71.3 |
 
-#### Radius sweep (K=150, ω<sub>l</sub>=[1,1,1,1])
+### Radius sweep (K=150, ω<sub>l</sub>=[1,1,1,1])
 The radius ρ is defined on the discrete patch grid and therefore only takes integer values.
 
 | Setting | I-AUROC | I-F1 | P-AP | P-F1 |
@@ -41,8 +45,9 @@ The radius ρ is defined on the discrete patch grid and therefore only takes int
 | ρ=8 | 99.2 | 98.7 | 75.2 | 70.9 |
 | ρ=10 | 98.9 | 98.4 | 74.9 | 70.6 |
 
-#### Layer-fusion sweep (K=150, ρ=1)
-The single-layer results(first four lines) are provided only as ablations, as RAD is fundamentally a multi-layer method. Here, ω<sub>l</sub> = [x₁, x₂, x₃, x₄] denotes the score weights assigned to layers 4, 7, 10, and 12, respectively.
+### Layer-fusion sweep (K=150, ρ=1)
+Each weight vector assigns a score weight to encoder layers 4, 7, 10 and 12, in that order. The first four rows isolate one layer at a time. The remaining rows combine layers.
+
 | Setting | I-AUROC | I-F1 | P-AP | P-F1 |
 |---|---:|---:|---:|---:|
 | ω<sub>l</sub>=[1,0,0,0] | 96.6 | 96.5 | 65.5 | 64.1 |
